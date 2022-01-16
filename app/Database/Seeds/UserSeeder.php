@@ -4,7 +4,7 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 use CodeIgniter\I18n\Time;
-use App\Models\User;
+use App\Models\UserModel;
 
 class UserSeeder extends Seeder
 {
@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
         $this->db->table('users')->insert($data);
 
         // Method 2
-        $user = new User;
+        $user = new UserModel;
         $faker = \Faker\Factory::create();
 
         for ($i = 0; $i < 300; $i++) {
