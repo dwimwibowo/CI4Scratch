@@ -1,0 +1,14 @@
+ol.breadcrumb {
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.breadcrumb-item+.breadcrumb-item {
+    padding-left: .3rem;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    padding-right: .3rem;
+}
