@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
                 'unique'            => true,
                 'null'              => false
             ],
-            'img'           => [
+            'img_ext'           => [
                 'type'              => 'VARCHAR',
                 'constraint'        => 100,
                 'null'              => true
@@ -42,9 +42,15 @@ class CreateUsersTable extends Migration
                 'constraint'        => 100,
                 'null'              => false
             ],
+            'role_id'       => [
+                'type'              => 'INT',
+                'constraint'        => 5,
+                'unsigned'          => true,
+                'null'              => false
+            ],
             'created_at datetime default current_timestamp',
-            'updated_at datetime null default current_timestamp on update current_timestamp',
-            'deleted_at datetime null default current_timestamp on update current_timestamp'
+            'updated_at datetime null on update current_timestamp',
+            'deleted_at datetime null'
         ]);
 
         $this->forge->addKey('user_id', true);

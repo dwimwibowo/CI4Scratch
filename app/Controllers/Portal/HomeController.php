@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers\Portal;
 
 use App\Controllers\BaseController;
 
-class Home extends BaseController
+class HomeController extends BaseController
 {
     public function __construct(){
         
@@ -16,6 +16,6 @@ class Home extends BaseController
         $data['title'] = "CI4 Home";
         $data['breadcrumb'] = breadcrumb('home');
         
-        return render($this, 'admin/home', $data);
+        return render($this, 'portal/home', $data);
     }
 }

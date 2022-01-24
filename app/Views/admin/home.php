@@ -1,18 +1,13 @@
 <?=$this->extend("admin/layout/master")?>
 
 <?=$this->section("appTitle")?>
-  CodeIgniter 4 From Scratch
-<?=$this->endSection()?>
-
-<?=$this->section("pageTitle")?>
-  Home
+  CodeIgniter 4 From Scratch - Home
 <?=$this->endSection()?>
   
 <?=$this->section("content")?>
-
-<h1>Welcome to contact us page</h1>
-<p>
-    Hi, How are you?
-</p>
-
+  <div class="card card-primary card-outline w-100">
+    <div class="card-body">
+      <p class="card-text">Welcome to CodeIgniter 4 From Scratch.</p>
+    </div>
+  </div><!-- /.card -->
 <?=$this->endSection()?>
