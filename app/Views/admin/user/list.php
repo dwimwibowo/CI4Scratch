@@ -6,6 +6,8 @@
 
 <?=$this->section("header")?>
   <?=$this->include("admin/layout/header_datatable"); ?>
+  <!-- Ekko Lightbox -->
+  <link rel="stylesheet" href="<?= base_url(); ?>/assets/plugins/ekko-lightbox/ekko-lightbox.css">
 <?=$this->endSection()?>
   
 <?=$this->section("content")?>
@@ -61,7 +63,11 @@
                         <td><?= $user->first_name; ?></td>
                         <td><?= $user->last_name; ?></td>
                         <td><?= $user->email; ?></td>
-                        <td><img src="<?= imgAssets($userImgFolder, $user->user_id.".".$user->img_ext); ?>" alt="..." class="img-thumbnail" /></td>
+                        <td>
+                          <a href="<?= imgAssets($userImgFolder, $user->user_id.".".$user->img_ext); ?>" data-toggle="lightbox" data-title="Photo <?= $user->first_name." ".$user->last_name; ?>"  data-max-width="800" data-max-height="600">
+                            <img src="<?= imgAssets($userImgFolder, $user->user_id.".".$user->img_ext); ?>" alt="..." class="img-thumbnail" />
+                          </a>
+                        </td>
                         <td>
                           <div class="btn-group-vertical" role="group" aria-label="">
                             <a href="<?= base_url(); ?>/admin/user/<?= $user->user_id; ?>" class="btn btn-success btn-sm" title="Detail"><i class="fas fa-search"></i></a>
@@ -87,6 +93,9 @@
 
 <?=$this->section("footer")?>
   <?=$this->include("admin/layout/footer_datatable"); ?>
+
+  <!-- Ekko Lightbox -->
+  <script src="<?= base_url(); ?>/assets/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
 
   <!-- Page specific script -->
   <script>
@@ -120,7 +129,14 @@
           $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
         }
         $(this).data('clicks', !clicks)
-      })
+      });
+
+      $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+          alwaysShowClose: true
+        });
+      });
     });
   </script>
 <?=$this->endSection()?>
