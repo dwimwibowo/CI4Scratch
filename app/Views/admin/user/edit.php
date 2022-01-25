@@ -4,6 +4,11 @@
   CodeIgniter 4 From Scratch - Update User
 <?=$this->endSection()?>
 
+<?=$this->section("header")?>
+  <!-- Ekko Lightbox -->
+  <link rel="stylesheet" href="<?= base_url(); ?>/assets/plugins/ekko-lightbox/ekko-lightbox.css">
+<?=$this->endSection()?>
+
 <?=$this->section("pageTitle")?>
   User
 <?=$this->endSection()?>
@@ -53,7 +58,9 @@
                 <label for="img" class="col-sm-2 col-form-label">Photo</label> 
                 <div class="col-sm-10">
                     <input type="file" class="form-control-file" id="imgFile" name="imgFile"><br/>
-                    <img src="<?= imgAssets($userImgFolder, $user->user_id.".".$user->img_ext); ?>" id="img" class="img-thumbnail" style="max-width: 150px; max-height: 150px;" alt="..." />
+                    <a href="<?= imgAssets($userImgFolder, $user->user_id.".".$user->img_ext); ?>" data-toggle="lightbox" data-title="Photo <?= $user->first_name." ".$user->last_name; ?>"  data-max-width="800" data-max-height="600">
+                        <img src="<?= imgAssets($userImgFolder, $user->user_id.".".$user->img_ext); ?>" id="img" alt="..." class="img-thumbnail" style="max-width: 150px; max-height: 150px;" />
+                    </a>
                 </div>
             </div>
             <div class="form-group row">
@@ -92,4 +99,21 @@
         <?= form_close(); ?>
     </div>
   </div><!-- /.card -->
+<?=$this->endSection()?>
+
+<?=$this->section("footer")?>
+  <!-- Ekko Lightbox -->
+  <script src="<?= base_url(); ?>/assets/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+  <!-- Page specific script -->
+  <script>
+    $(function () {
+      $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+          alwaysShowClose: true
+        });
+      });
+    });
+  </script>
 <?=$this->endSection()?>
