@@ -10,14 +10,18 @@
   
 <?=$this->section("content")?>
   <div class="card card-primary card-outline w-100">
+    <?= form_open(base_url().'/admin/user', ['novalidate="novalidate"']); ?>
     <div class="card-header">
       <h5 class="m-0 float-left"><?= $cardTitle; ?></h5>
 
       <div class="btn-group float-right" role="group" aria-label="">
-        <a href="<?= base_url(); ?>/admin/user/new" class="btn btn-success btn-sm" title="Create"><i class="fas fa-plus"></i></a>
+        <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i></button>
+        <button name="submit" type="submit" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
+        <a href="<?= base_url(); ?>/admin/user/new" class="btn btn-default btn-sm" title="Create"><i class="fas fa-plus"></i></a>
+        <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
       </div>
     </div>
-    <div class="card-body">
+    <div class="card-body data-table">
       <?php
             if(isset($errors)) {
                 $msgError = array();
@@ -50,7 +54,10 @@
             if (count($users) > 0):
                 foreach ($users as $user): ?>
                     <tr>
-                        <td><?= $user->user_id; ?></td>
+                        <td>
+                          <div class="float-left"><input type="checkbox" value="<?= $user->user_id; ?>" id="chkData<?= $user->user_id; ?>" name="chkData[]"></div>
+                          <?= $user->user_id; ?>
+                        </td>
                         <td><?= $user->first_name; ?></td>
                         <td><?= $user->last_name; ?></td>
                         <td><?= $user->email; ?></td>
@@ -66,7 +73,7 @@
                 <?php endforeach;
             else: ?>
                 <tr>
-                    <td colspan="6">
+                    <td colspan="7">
                         <h6 class="text-danger text-center">No user found</h6>
                     </td>
                 </tr>
@@ -74,6 +81,7 @@
         </tbody>
       </table>
     </div>
+    <?= form_close(); ?>
   </div><!-- /.card -->
 <?=$this->endSection()?>
 
@@ -99,6 +107,20 @@
           { orderable: false, targets: [4,5] }
         ]
       }).buttons().container().appendTo('#dataTable_wrapper .col-md-6:eq(0)');
+
+      $('.checkbox-toggle').click(function () {
+        var clicks = $(this).data('clicks')
+        if (clicks) {
+          //Uncheck all checkboxes
+          $('.data-table input[type=\'checkbox\']').prop('checked', false)
+          $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+        } else {
+          //Check all checkboxes
+          $('.data-table input[type=\'checkbox\']').prop('checked', true)
+          $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
+        }
+        $(this).data('clicks', !clicks)
+      })
     });
   </script>
 <?=$this->endSection()?>

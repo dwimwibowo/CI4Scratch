@@ -12,7 +12,7 @@ class UserModel extends Model
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'object'; //array / object
-    protected $useSoftDeletes   = false;
+    protected $useSoftDeletes   = true;
     protected $protectFields    = true;
     protected $allowedFields    = ['first_name', 'last_name', 'email', 'img_ext', 'password', 'role_id'];
 

@@ -279,4 +279,41 @@ class UserController extends BaseController
         finish:
         return $this->list($data);
     }
+    
+    public function remove()
+    {
+        $data = null;
+
+        if($this->request->getMethod() == "post")
+        {
+            $data = $this->request->getPost();
+
+            if(isset($data['chkData']))
+            {
+                $this->users->db->transBegin();
+                try {
+                    //var_dump([join(",",$data['chkData'])]);
+
+                    $this->users->delete($data['chkData']);
+
+                    $this->users->db->transCommit();
+
+                    session()->setFlashData('msgInfo','Data deleted successfully.');
+
+                    return redirect()->to('admin/user');
+                }
+                catch (\Exception $e)
+                {
+                    $data['errors'] = $e;
+                    $this->users->db->transRollback();
+                }
+            }
+            else
+            {
+                $data['errors'] = 'Please choose data to deleted.';
+            }
+        }
+
+        return $this->list($data);
+    }
 }

@@ -43,7 +43,8 @@ $routes->group('admin',['namespace' => 'App\Controllers\Admin'], function ($rout
     $routes->get('user/edit/(:num)', 'UserController::edit/$1');
     $routes->get('user/remove/(:num)', 'UserController::delete/$1');
     $routes->put('user/edit/(:num)', 'UserController::update/$1');
-    $routes->post('user', 'UserController::create');
+    $routes->post('user', 'UserController::remove');
+    $routes->post('user/new', 'UserController::create');
 });
 
 /*
