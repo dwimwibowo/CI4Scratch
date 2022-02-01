@@ -6,6 +6,10 @@ https://www.udemy.com/course/codeigniter-4-from-scratch-2022/
 - CodeIginiter 4.1.5
 - Bootstrap 5
 
+**Reference:**
+https://www.twilio.com/blog/create-secured-restful-api-codeigniter-php
+https://onlinewebtutorblog.com/codeigniter-4-restful-apis-with-jwt-authentication/
+
 ###########################################################################################################
 **List commands:**
 - php spark --help

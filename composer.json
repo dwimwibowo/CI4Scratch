@@ -9,7 +9,9 @@
         "php": "^7.3 || ^8.0",
         "codeigniter4/framework": "^4",
         "tatter/assets": "^2.3",
-        "almasaeed2010/adminlte": "^3.1"
+        "almasaeed2010/adminlte": "^3.1",
+        "firebase/php-jwt": "^6.0",
+        "ezyang/htmlpurifier": "^4.14"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",

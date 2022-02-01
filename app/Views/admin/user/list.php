@@ -12,7 +12,7 @@
   
 <?=$this->section("content")?>
   <div class="card card-primary card-outline w-100">
-    <?= form_open(base_url().'/admin/user', ['novalidate="novalidate"']); ?>
+    <?= form_open(base_url().'/admin/user'); ?>
     <div class="card-header">
       <h5 class="m-0 float-left"><?= $cardTitle; ?></h5>
 

@@ -35,7 +35,7 @@
             else if(session()->has("msgInfo")) { echo msgInfo('Success', session("msgInfo"), 1); }
         ?>
         
-        <?= form_open_multipart(base_url().'/admin/user/edit/'.$user->user_id, ['novalidate="novalidate"']); ?>
+        <?= form_open_multipart(base_url().'/admin/user/edit/'.$user->user_id); ?>
             <div class="form-group row">
                 <label for="firstName" class="col-sm-2 col-form-label">First Name</label> 
                 <div class="col-sm-10">

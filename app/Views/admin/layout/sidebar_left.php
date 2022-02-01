@@ -11,10 +11,11 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="https://avatars.githubusercontent.com/u/13568817" class="img-circle elevation-2" alt="User Image">
+          <img src="<?= $userimg; ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Dwi Wibowo</a>
+          <a href="#" class="d-block"><?= $username; ?></a>
+          <h6 class="text-info"><?= $userrole; ?></h6>
         </div>
       </div>
 

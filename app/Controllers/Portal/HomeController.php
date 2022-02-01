@@ -12,10 +12,9 @@ class HomeController extends BaseController
 
     public function index()
     {
-        $data = [];
-        $data['title'] = "CI4 Home";
+        $data['pageTitle'] = '<i class="nav-icon fas fa-home"></i> Home';
         $data['breadcrumb'] = breadcrumb('home');
         
-        return render($this, 'portal/home', $data);
+        return view('portal/home', $data);
     }
 }

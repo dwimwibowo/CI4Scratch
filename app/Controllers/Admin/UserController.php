@@ -316,4 +316,11 @@ class UserController extends BaseController
 
         return $this->list($data);
     }
+
+    public function logout()
+    {
+        delete_cookie("access_token");
+
+        return redirect()->to("/login");
+    }
 }

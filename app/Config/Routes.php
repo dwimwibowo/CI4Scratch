@@ -32,6 +32,8 @@ $routes->setAutoRoute(false);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'HomeController::index');
+$routes->match(["get","post"], 'login', 'UserController::login');
+
 $routes->group('admin',['namespace' => 'App\Controllers\Admin'], function ($routes) {
     $routes->get('/', 'HomeController::index');
     
@@ -45,6 +47,19 @@ $routes->group('admin',['namespace' => 'App\Controllers\Admin'], function ($rout
     $routes->put('user/edit/(:num)', 'UserController::update/$1');
     $routes->post('user', 'UserController::remove');
     $routes->post('user/new', 'UserController::create');
+});
+
+
+$routes->group('api',['namespace' => 'App\Controllers\Api'], function ($routes) {
+    $routes->get('/', 'HomeController::index');
+    
+    $routes->post('login', 'UserController::login');
+
+    //$routes->resource('user');    
+    $routes->get('user', 'UserController::index');
+    $routes->get('user/(:num)', 'UserController::show/$1');
+    $routes->delete('user/(:num)', 'UserController::delete/$1');
+
 });
 
 /*

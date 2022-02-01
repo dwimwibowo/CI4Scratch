@@ -17,12 +17,12 @@
 
     <!-- Main content -->
     <div class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <?= $this->renderSection("content") ?>
-            </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
+      <div class="container-fluid">
+        <div class="row">
+            <?= $this->renderSection("content") ?>
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
 </div>
